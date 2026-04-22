@@ -16,7 +16,7 @@ export const BRIEFINGS: readonly BriefingConfig[] = [
     category: "Podcast",
     accent: "#bb4444",
     description: "10개 영어 팟캐스트 · 주간",
-    manifestUrl: "file:./mocks/podcast-briefing.json",
+    manifestUrl: "https://kipeum86.github.io/podcast-briefing/manifest.json",
     siteUrl: "https://kipeum86.github.io/podcast-briefing/",
   },
   {
@@ -25,7 +25,7 @@ export const BRIEFINGS: readonly BriefingConfig[] = [
     category: "YouTube",
     accent: "#2d4a3e",
     description: "6개 한국 채널 · 주간",
-    manifestUrl: "file:./mocks/youtube-briefing.json",
+    manifestUrl: "https://kipeum86.github.io/youtube-briefing/manifest.json",
     siteUrl: "https://kipeum86.github.io/youtube-briefing/",
   },
   {
