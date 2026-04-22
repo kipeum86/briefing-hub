@@ -1,0 +1,29 @@
+:root {
+  --bg: #f9f7f2;
+  --ink: #1a1a1a;
+  --ink-soft: #555;
+  --rule: #d8d4ca;
+  --card: #ffffff;
+
+  --podcast: #bb4444;
+  --youtube: #2d4a3e;
+  --daily: #1a3a6b;
+  --legal: #6b2d5c;
+  --economist: #e3120b;
+
+  --scale: 1;
+  --base: calc(16px * var(--scale));
+
+  --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+
+  --display-weight: 700;
+  --display-style: normal;
+  --h2-weight: 600;
+  --label-case: uppercase;
+  --label-letter: 1px;
+  --label-weight: 500;
+  --display-letter: -2px;
+}
+

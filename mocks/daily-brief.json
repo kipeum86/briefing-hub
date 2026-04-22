@@ -1,0 +1,35 @@
+{
+  "name": "Daily Brief",
+  "category": "Daily · Macro",
+  "accent": "#1a3a6b",
+  "description": "글로벌 매크로 + 국내 뉴스 · 매일",
+  "url": "https://kipeum86.github.io/daily-brief/",
+  "updated_at": "2026-04-22T03:00:00Z",
+  "latest": {
+    "title": "한은 금통위 동결 — 내수 부진 신호 주목",
+    "source": "Daily Brief",
+    "url": "https://kipeum86.github.io/daily-brief/2026-04-22/",
+    "published_at": "2026-04-22T03:00:00Z"
+  },
+  "items": [
+    {
+      "title": "한은 금통위 동결 — 내수 부진 신호 주목",
+      "source": "Daily Brief",
+      "url": "https://kipeum86.github.io/daily-brief/2026-04-22/",
+      "published_at": "2026-04-22T03:00:00Z"
+    },
+    {
+      "title": "엔비디아 데이터센터 매출 컨센 상회 — 가이던스가 다시 핵심",
+      "source": "Daily Brief",
+      "url": "https://kipeum86.github.io/daily-brief/2026-04-19/",
+      "published_at": "2026-04-19T03:00:00Z"
+    },
+    {
+      "title": "유로존 PMI 50선 회복 — ECB 금리 인하 속도조절 시그널",
+      "source": "Daily Brief",
+      "url": "https://kipeum86.github.io/daily-brief/2026-04-16/",
+      "published_at": "2026-04-16T03:00:00Z"
+    }
+  ]
+}
+

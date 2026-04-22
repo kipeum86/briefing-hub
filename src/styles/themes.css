@@ -1,0 +1,24 @@
+:root.theme-a {
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-body: Georgia, "Times New Roman", serif;
+  --font-mono: Georgia, "Times New Roman", serif;
+  --display-weight: 400;
+  --display-style: italic;
+  --h2-weight: 400;
+  --label-letter: 2px;
+  --label-weight: 400;
+  --display-letter: -1px;
+}
+
+:root.theme-b {
+  --font-display: "Paperlogy", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+  --font-body: "Paperlogy", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+  --font-mono: "Paperlogy", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+  --display-weight: 800;
+  --display-style: normal;
+  --h2-weight: 600;
+  --label-letter: 2px;
+  --label-weight: 800;
+  --display-letter: -1.5px;
+}
+

@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Paperlogy";
+  font-weight: 400;
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2")
+    format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Paperlogy";
+  font-weight: 600;
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2")
+    format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Paperlogy";
+  font-weight: 800;
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2")
+    format("woff2");
+  font-display: swap;
+}

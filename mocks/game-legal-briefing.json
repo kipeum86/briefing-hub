@@ -1,0 +1,29 @@
+{
+  "name": "Game Legal Briefing",
+  "category": "Game · Legal",
+  "accent": "#6b2d5c",
+  "description": "게임 업계 법규 · 판례 · 주간",
+  "url": "https://kipeum86.github.io/game-legal-briefing/",
+  "updated_at": "2026-04-19T00:00:00Z",
+  "latest": {
+    "title": "확률형 아이템 표시 의무 — 공정위 첫 행정처분 사례",
+    "source": "Game Legal Briefing",
+    "url": "https://kipeum86.github.io/game-legal-briefing/probability-item-ftc/",
+    "published_at": "2026-04-19T00:00:00Z"
+  },
+  "items": [
+    {
+      "title": "확률형 아이템 표시 의무 — 공정위 첫 행정처분 사례",
+      "source": "Game Legal Briefing",
+      "url": "https://kipeum86.github.io/game-legal-briefing/probability-item-ftc/",
+      "published_at": "2026-04-19T00:00:00Z"
+    },
+    {
+      "title": "메타버스 플랫폼 미성년자 보호 가이드라인 개정안 입법예고",
+      "source": "Game Legal Briefing",
+      "url": "https://kipeum86.github.io/game-legal-briefing/metaverse-minors/",
+      "published_at": "2026-04-16T00:00:00Z"
+    }
+  ]
+}
+

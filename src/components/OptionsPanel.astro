@@ -1,0 +1,311 @@
+---
+import { DEFAULT_PREFS, SIZE_SCALES, STORAGE_KEY } from "~/lib/prefs";
+
+const themes = [
+  { value: "c", name: "C · Neutral", hint: "Inter + Plex" },
+  { value: "a", name: "A · Editorial", hint: "Georgia" },
+  { value: "b", name: "B · Korean Sans", hint: "Paperlogy" },
+];
+
+const sizes = [
+  { value: "compact", name: "Compact" },
+  { value: "default", name: "Default" },
+  { value: "large", name: "Large" },
+];
+---
+<button
+  class="opts-toggle"
+  id="optsToggle"
+  type="button"
+  aria-label="Reading preferences"
+  aria-controls="optsPanel"
+  aria-expanded="false"
+  title="Reading preferences"
+>
+  ⚙
+</button>
+
+<aside class="opts-panel" id="optsPanel" aria-hidden="true">
+  <div class="opts-section">
+    <h4>Theme</h4>
+    <div class="opts-row" data-pref="theme">
+      {themes.map((theme) => (
+        <label data-value={theme.value}>
+          <input type="radio" name="theme" value={theme.value} />
+          <span class="opt-name">{theme.name}</span>
+          <span class="opt-hint">{theme.hint}</span>
+        </label>
+      ))}
+    </div>
+  </div>
+
+  <div class="opts-section">
+    <h4>Text size</h4>
+    <div class="opts-row size-row" data-pref="size">
+      {sizes.map((size) => (
+        <label data-value={size.value}>
+          <input type="radio" name="size" value={size.value} />
+          <span class="opt-name">{size.name}</span>
+        </label>
+      ))}
+    </div>
+  </div>
+
+  <div class="opts-foot">
+    Saved to your browser. Hub remembers your choice next time.
+    <button class="opts-reset" id="optsReset" type="button">Reset to defaults</button>
+  </div>
+</aside>
+
+<style>
+  .opts-toggle {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--bg);
+    border: 0;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    font-family: inherit;
+    transition: transform 0.2s ease;
+  }
+
+  .opts-toggle:hover {
+    transform: rotate(45deg);
+  }
+
+  .opts-panel {
+    position: fixed;
+    top: 64px;
+    right: 16px;
+    width: 280px;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    padding: 20px;
+    z-index: 199;
+    font-family: var(--font-mono);
+    transform: translateX(calc(100% + 32px));
+    transition: transform 0.25s ease;
+  }
+
+  .opts-panel.open {
+    transform: translateX(0);
+  }
+
+  .opts-panel h4 {
+    font-size: 0.625rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .opts-section {
+    margin-bottom: 22px;
+  }
+
+  .opts-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .opts-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .opts-row label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border: 1px solid var(--rule);
+    cursor: pointer;
+    font-size: 0.8125rem;
+    transition: background 0.1s ease, color 0.1s ease, border-color 0.1s ease;
+  }
+
+  .opts-row label:hover {
+    background: var(--bg);
+  }
+
+  .opts-row label.checked {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+
+  .opts-row input {
+    display: none;
+  }
+
+  .opt-name {
+    font-weight: 500;
+  }
+
+  .opt-hint {
+    color: var(--ink-soft);
+    font-size: 0.6875rem;
+    margin-left: auto;
+  }
+
+  .opts-row label.checked .opt-hint {
+    color: rgba(255, 255, 255, 0.66);
+  }
+
+  .opts-row.size-row {
+    flex-direction: row;
+    gap: 6px;
+  }
+
+  .opts-row.size-row label {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .opts-foot {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    font-size: 0.6875rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  .opts-reset {
+    display: inline-block;
+    margin-top: 8px;
+    background: none;
+    border: 1px solid var(--rule);
+    padding: 4px 8px;
+    font-size: 0.6875rem;
+    cursor: pointer;
+    font-family: inherit;
+    color: inherit;
+  }
+
+  @media (max-width: 720px) {
+    .opts-panel {
+      width: calc(100vw - 32px);
+    }
+  }
+</style>
+
+<script
+  is:inline
+  define:vars={{
+    STORAGE_KEY,
+    DEFAULTS: DEFAULT_PREFS,
+    SIZES: SIZE_SCALES,
+  }}
+>
+  function loadPrefs() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return { ...DEFAULTS };
+      const parsed = JSON.parse(raw);
+      const theme = ["a", "b", "c"].includes(parsed && parsed.theme) ? parsed.theme : DEFAULTS.theme;
+      const size = ["compact", "default", "large"].includes(parsed && parsed.size)
+        ? parsed.size
+        : DEFAULTS.size;
+      return { theme, size };
+    } catch {
+      return { ...DEFAULTS };
+    }
+  }
+
+  function savePrefs(prefs) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
+  }
+
+  function applyPrefs(prefs) {
+    const root = document.documentElement;
+    root.classList.remove("theme-a", "theme-b", "theme-c");
+    root.classList.add("theme-" + prefs.theme);
+    root.style.setProperty("--scale", String(SIZES[prefs.size] || 1));
+
+    document.querySelectorAll(".opts-row label").forEach((node) => {
+      if (!(node instanceof HTMLElement)) return;
+      node.classList.remove("checked");
+      const input = node.querySelector("input");
+      if (input instanceof HTMLInputElement) input.checked = false;
+    });
+
+    document.querySelectorAll(".opts-row").forEach((rowNode) => {
+      if (!(rowNode instanceof HTMLElement)) return;
+      const pref = rowNode.dataset.pref;
+      if (!pref) return;
+      const value = prefs[pref];
+      const label = rowNode.querySelector('label[data-value="' + value + '"]');
+      if (!(label instanceof HTMLElement)) return;
+      label.classList.add("checked");
+      const input = label.querySelector("input");
+      if (input instanceof HTMLInputElement) input.checked = true;
+    });
+  }
+
+  const toggle = document.getElementById("optsToggle");
+  const panel = document.getElementById("optsPanel");
+  const reset = document.getElementById("optsReset");
+
+  if (
+    toggle instanceof HTMLButtonElement &&
+    panel instanceof HTMLElement &&
+    reset instanceof HTMLButtonElement
+  ) {
+    let prefs = loadPrefs();
+
+    function setOpen(isOpen) {
+      panel.classList.toggle("open", isOpen);
+      panel.setAttribute("aria-hidden", isOpen ? "false" : "true");
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
+
+    applyPrefs(prefs);
+
+    toggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      setOpen(!panel.classList.contains("open"));
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!(event.target instanceof Node)) return;
+      if (!panel.contains(event.target) && event.target !== toggle && panel.classList.contains("open")) {
+        setOpen(false);
+      }
+    });
+
+    document.querySelectorAll(".opts-row label").forEach((labelNode) => {
+      if (!(labelNode instanceof HTMLElement)) return;
+      labelNode.addEventListener("click", (event) => {
+        event.preventDefault();
+        const row = labelNode.closest(".opts-row");
+        const key = row instanceof HTMLElement ? row.dataset.pref : undefined;
+        const value = labelNode.dataset.value;
+        if (!key || !value) return;
+        prefs = { ...prefs, [key]: value };
+        savePrefs(prefs);
+        applyPrefs(prefs);
+      });
+    });
+
+    reset.addEventListener("click", () => {
+      prefs = { ...DEFAULTS };
+      savePrefs(prefs);
+      applyPrefs(prefs);
+    });
+  }
+</script>
+

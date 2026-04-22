@@ -1,0 +1,51 @@
+---
+import OptionsPanel from "~/components/OptionsPanel.astro";
+import { DEFAULT_PREFS, STORAGE_KEY } from "~/lib/prefs";
+import "~/styles/tokens.css";
+import "~/styles/themes.css";
+import "~/styles/base.css";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const defaultTheme = import.meta.env.PUBLIC_HUB_DEFAULT_THEME ?? DEFAULT_PREFS.theme;
+const baseUrl = import.meta.env.BASE_URL;
+const assetBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+---
+<!DOCTYPE html>
+<html lang="ko" data-default-theme={defaultTheme} class={`theme-${defaultTheme}`}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href={`${assetBase}favicon.svg`} />
+    <link rel="stylesheet" href={`${assetBase}fonts.css`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+    <script is:inline define:vars={{ STORAGE_KEY, DEFAULT_THEME: defaultTheme }}>
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        const stored = raw ? JSON.parse(raw) : null;
+        const theme = ["a", "b", "c"].includes(stored && stored.theme) ? stored.theme : DEFAULT_THEME;
+        const size = ["compact", "default", "large"].includes(stored && stored.size)
+          ? stored.size
+          : "default";
+        const scale = { compact: 0.9, default: 1, large: 1.15 }[size];
+        const root = document.documentElement;
+        root.classList.remove("theme-a", "theme-b", "theme-c");
+        root.classList.add("theme-" + theme);
+        root.style.setProperty("--scale", String(scale));
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <slot />
+    <OptionsPanel />
+  </body>
+</html>

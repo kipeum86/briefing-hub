@@ -1,0 +1,12 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*", "astro.config.mjs", "playwright.config.ts", "vitest.config.ts"],
+  "exclude": ["dist/", "node_modules/"]
+}
+

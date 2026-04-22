@@ -1,0 +1,31 @@
+---
+import type { LoadedBriefing } from "~/lib/highlights";
+import { toRelativeLong } from "~/lib/time";
+
+interface Props {
+  loaded: LoadedBriefing;
+}
+
+const { loaded } = Astro.props;
+const { config, manifest } = loaded;
+const now = new Date();
+const updated = toRelativeLong(manifest.updated_at, now);
+const cardStyle = `border-left: 3px solid ${config.accent};`;
+const categoryStyle = `color: ${config.accent};`;
+---
+{config.comingSoon ? (
+  <div class="card coming" style={cardStyle}>
+    <div class="card-cat" style={categoryStyle}>{manifest.category}</div>
+    <h3>{manifest.name}</h3>
+    <div class="card-desc">{manifest.description}</div>
+    <div class="card-meta">// coming soon</div>
+  </div>
+) : (
+  <a class="card" href={manifest.url} style={cardStyle}>
+    <div class="card-cat" style={categoryStyle}>{manifest.category}</div>
+    <h3>{manifest.name}</h3>
+    <div class="card-desc">{manifest.description}</div>
+    <div class="card-meta">updated {updated}</div>
+  </a>
+)}
+

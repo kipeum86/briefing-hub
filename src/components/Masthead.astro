@@ -1,0 +1,14 @@
+---
+interface Props {
+  dateLabel: string;
+  weekNumber: number;
+}
+
+const { dateLabel, weekNumber } = Astro.props;
+---
+<header class="mast">
+  <div class="mast-meta">{dateLabel} · Week {weekNumber}</div>
+  <h1>Briefing Hub</h1>
+  <div class="mast-sub">// 5 briefings · one room · pick your read</div>
+</header>
+

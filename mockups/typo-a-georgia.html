@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Briefing Hub · Typo A — Georgia (Editorial)</title>
+<style>
+  :root {
+    --bg: #f9f7f2;
+    --ink: #1a1a1a;
+    --ink-soft: #555;
+    --rule: #d8d4ca;
+    --card: #ffffff;
+    --podcast: #b44;
+    --youtube: #2d4a3e;
+    --daily: #1a3a6b;
+    --legal: #6b2d5c;
+    --economist: #e3120b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    padding: 48px 32px 96px;
+  }
+  .container { max-width: 1080px; margin: 0 auto; }
+
+  /* Masthead */
+  .mast {
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 24px;
+    margin-bottom: 40px;
+  }
+  .mast-meta {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  .mast h1 {
+    font-size: 64px;
+    font-weight: normal;
+    letter-spacing: -1px;
+    font-style: italic;
+    line-height: 1;
+  }
+  .mast-sub {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-top: 12px;
+    font-style: italic;
+  }
+
+  /* Hero */
+  .hero {
+    background: var(--card);
+    padding: 32px;
+    margin-bottom: 48px;
+    border-left: 3px solid var(--podcast);
+  }
+  .hero-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--podcast);
+    margin-bottom: 12px;
+    font-family: Georgia, serif;
+  }
+  .hero h2 {
+    font-size: 32px;
+    font-weight: normal;
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+  .hero-source {
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  /* Section heading */
+  .section-h {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* Card grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .card {
+    background: var(--card);
+    padding: 24px;
+    border: 1px solid var(--rule);
+    transition: transform 0.15s;
+    cursor: pointer;
+  }
+  .card:hover { transform: translateY(-2px); }
+  .card-cat {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-family: Georgia, serif;
+  }
+  .card h3 {
+    font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .card-desc {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  .card-meta {
+    font-size: 11px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--rule);
+    padding-top: 12px;
+    letter-spacing: 0.5px;
+  }
+  .card.coming { opacity: 0.5; }
+  .card.add {
+    background: transparent;
+    border: 1px dashed var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-size: 14px;
+  }
+
+  /* Highlights */
+  .highlights ol {
+    list-style: none;
+  }
+  .hl-item {
+    display: grid;
+    grid-template-columns: 80px 1fr 100px;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .hl-cat {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-family: Georgia, serif;
+  }
+  .hl-title {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .hl-time {
+    font-size: 11px;
+    color: var(--ink-soft);
+    text-align: right;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="mast">
+    <div class="mast-meta">2026 · April · 22 · Week 17</div>
+    <h1>Briefing Hub</h1>
+    <div class="mast-sub">Five briefings, one room. Pick your read.</div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-label">PODCAST · LATEST</div>
+    <h2>Why the Bond Market Can't Agree on Recession</h2>
+    <div class="hero-source">Odd Lots · Bloomberg — 5 hours ago</div>
+  </section>
+
+  <h2 class="section-h">Briefings</h2>
+  <div class="grid">
+    <a class="card" style="border-left: 3px solid var(--podcast);">
+      <div class="card-cat" style="color: var(--podcast);">PODCAST</div>
+      <h3>Podcast Briefing</h3>
+      <div class="card-desc">10개 영어 팟캐스트 · 주간</div>
+      <div class="card-meta">Updated 5h ago</div>
+    </a>
+    <a class="card" style="border-left: 3px solid var(--youtube);">
+      <div class="card-cat" style="color: var(--youtube);">YOUTUBE</div>
+      <h3>Youtube Briefing</h3>
+      <div class="card-desc">6개 한국 채널 · 주간</div>
+      <div class="card-meta">Updated 1d ago</div>
+    </a>
+    <a class="card" style="border-left: 3px solid var(--daily);">
+      <div class="card-cat" style="color: var(--daily);">DAILY · MACRO</div>
+      <h3>Daily Brief</h3>
+      <div class="card-desc">글로벌 매크로 + 국내 뉴스 · 매일</div>
+      <div class="card-meta">Updated 2h ago</div>
+    </a>
+    <a class="card" style="border-left: 3px solid var(--legal);">
+      <div class="card-cat" style="color: var(--legal);">GAME · LEGAL</div>
+      <h3>Game Legal Briefing</h3>
+      <div class="card-desc">게임 업계 법규 · 판례 · 주간</div>
+      <div class="card-meta">Updated 3d ago</div>
+    </a>
+    <a class="card coming" style="border-left: 3px solid var(--economist);">
+      <div class="card-cat" style="color: var(--economist);">ECONOMIST</div>
+      <h3>Economist Briefing</h3>
+      <div class="card-desc">유료 구독 기사 큐레이션 · 주간</div>
+      <div class="card-meta">Coming soon</div>
+    </a>
+    <a class="card add">+ 새 브리핑 추가</a>
+  </div>
+
+  <section class="highlights">
+    <h2 class="section-h">이번 주 하이라이트</h2>
+    <ol>
+      <li class="hl-item">
+        <span class="hl-cat" style="color: var(--podcast);">PODCAST</span>
+        <span class="hl-title">Why the Bond Market Can't Agree on Recession</span>
+        <span class="hl-time">5h ago</span>
+      </li>
+      <li class="hl-item">
+        <span class="hl-cat" style="color: var(--daily);">DAILY</span>
+        <span class="hl-title">한은 금통위 동결 — 내수 부진 신호 주목</span>
+        <span class="hl-time">2h ago</span>
+      </li>
+      <li class="hl-item">
+        <span class="hl-cat" style="color: var(--youtube);">YOUTUBE</span>
+        <span class="hl-title">슈카월드 — 미국 관세 정책 다시 들썩이는 이유</span>
+        <span class="hl-time">1d ago</span>
+      </li>
+      <li class="hl-item">
+        <span class="hl-cat" style="color: var(--podcast);">PODCAST</span>
+        <span class="hl-title">The Daily — Inside the AI Talent Bidding War</span>
+        <span class="hl-time">1d ago</span>
+      </li>
+      <li class="hl-item">
+        <span class="hl-cat" style="color: var(--legal);">LEGAL</span>
+        <span class="hl-title">확률형 아이템 표시 의무 — 공정위 첫 행정처분 사례</span>
+        <span class="hl-time">3d ago</span>
+      </li>
+      <li class="hl-item">
+        <span class="hl-cat" style="color: var(--daily);">DAILY</span>
+        <span class="hl-title">엔비디아 데이터센터 매출 컨센 상회 — 가이던스가 다시 핵심</span>
+        <span class="hl-time">3d ago</span>
+      </li>
+      <li class="hl-item">
+        <span class="hl-cat" style="color: var(--podcast);">PODCAST</span>
+        <span class="hl-title">Plain English — Why Housing Inventory Just Snapped</span>
+        <span class="hl-time">4d ago</span>
+      </li>
+      <li class="hl-item">
+        <span class="hl-cat" style="color: var(--youtube);">YOUTUBE</span>
+        <span class="hl-title">삼프로TV — 반도체 사이클 정점 논쟁, 누구 말이 맞나</span>
+        <span class="hl-time">5d ago</span>
+      </li>
+      <li class="hl-item">
+        <span class="hl-cat" style="color: var(--legal);">LEGAL</span>
+        <span class="hl-title">메타버스 플랫폼 미성년자 보호 가이드라인 개정안 입법예고</span>
+        <span class="hl-time">6d ago</span>
+      </li>
+      <li class="hl-item">
+        <span class="hl-cat" style="color: var(--daily);">DAILY</span>
+        <span class="hl-title">유로존 PMI 50선 회복 — ECB 금리 인하 속도조절 시그널</span>
+        <span class="hl-time">6d ago</span>
+      </li>
+    </ol>
+  </section>
+</div>
+</body>
+</html>

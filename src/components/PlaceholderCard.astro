@@ -1,0 +1,16 @@
+---
+import type { FailedBriefing } from "~/lib/hub";
+
+interface Props {
+  failed: FailedBriefing;
+}
+
+const { failed } = Astro.props;
+---
+<div class="card placeholder" style={`border-left: 3px solid ${failed.config.accent};`}>
+  <div class="card-cat" style={`color: ${failed.config.accent};`}>{failed.config.category}</div>
+  <h3>{failed.config.name}</h3>
+  <div class="card-desc">점검 중 — 데이터 불러오기 실패</div>
+  <div class="card-meta">// {failed.reason}</div>
+</div>
+

@@ -1,0 +1,24 @@
+---
+import type { Highlight } from "~/lib/highlights";
+import { toRelativeShort } from "~/lib/time";
+
+interface Props {
+  items: readonly Highlight[];
+}
+
+const { items } = Astro.props;
+const now = new Date();
+---
+<section class="highlights">
+  <h2 class="section-h">This week</h2>
+  <ol>
+    {items.map(({ briefing, item }) => (
+      <li class="hl-item">
+        <span class="hl-cat" style={`color: ${briefing.accent};`}>{briefing.category}</span>
+        <a class="hl-title" href={item.url}>{item.title}</a>
+        <span class="hl-time">{toRelativeShort(item.published_at, now)}</span>
+      </li>
+    ))}
+  </ol>
+</section>
+

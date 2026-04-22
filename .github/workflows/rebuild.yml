@@ -1,0 +1,62 @@
+name: rebuild-and-deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "public/**"
+      - "mocks/**"
+      - "astro.config.mjs"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/rebuild.yml"
+  schedule:
+    - cron: "0 21 * * *"
+  repository_dispatch:
+    types: [briefing-updated]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: build astro
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - uses: actions/configure-pages@v5
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        env:
+          PUBLIC_HUB_DEFAULT_THEME: ${{ vars.PUBLIC_HUB_DEFAULT_THEME }}
+        run: npm run build
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    name: deploy to github pages
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+
