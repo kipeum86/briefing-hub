@@ -1,5 +1,5 @@
 import type { BriefingConfig } from "~/config/briefings";
-import type { Highlight, LoadedBriefing } from "./highlights";
+import type { LoadedBriefing } from "./highlights";
 import { fetchManifest, type ParseResult } from "./manifest";
 
 export type FailedBriefing = {
@@ -38,22 +38,3 @@ export async function loadAll(
 
   return { loaded, failed };
 }
-
-export function pickLatest(loaded: readonly LoadedBriefing[]): Highlight | null {
-  let best: Highlight | null = null;
-  let bestTime = -Infinity;
-
-  for (const briefing of loaded) {
-    const latest = briefing.manifest.latest;
-    if (!latest) continue;
-
-    const publishedAt = new Date(latest.published_at).getTime();
-    if (publishedAt > bestTime) {
-      bestTime = publishedAt;
-      best = { briefing: briefing.config, item: latest };
-    }
-  }
-
-  return best;
-}
-

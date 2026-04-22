@@ -1,17 +1,15 @@
 ---
 import BriefingCard from "~/components/BriefingCard.astro";
-import HeroLatest from "~/components/HeroLatest.astro";
 import HighlightsList from "~/components/HighlightsList.astro";
 import Masthead from "~/components/Masthead.astro";
 import PlaceholderCard from "~/components/PlaceholderCard.astro";
 import { BRIEFINGS } from "~/config/briefings";
 import type { LoadedBriefing } from "~/lib/highlights";
 import { mergeAndSortItems } from "~/lib/highlights";
-import { loadAll, pickLatest, type FailedBriefing } from "~/lib/hub";
+import { loadAll, type FailedBriefing } from "~/lib/hub";
 import BaseLayout from "~/layouts/BaseLayout.astro";
 
 const { loaded, failed } = await loadAll(BRIEFINGS);
-const hero = pickLatest(loaded);
 const highlights = mergeAndSortItems(loaded);
 const now = new Date();
 
@@ -59,8 +57,6 @@ const cardSlots = BRIEFINGS.map((config): CardSlot | null => {
 <BaseLayout title="Briefing Hub">
   <div class="container">
     <Masthead dateLabel={formatSeoulDate(now)} weekNumber={isoWeekInSeoul(now)} />
-
-    {hero && <HeroLatest highlight={hero} />}
 
     <h2 class="section-h">Briefings</h2>
     <div class="grid">
