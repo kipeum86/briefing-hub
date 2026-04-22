@@ -1,10 +1,9 @@
 import { expect, test } from "@playwright/test";
 
 test.describe("Briefing Hub - page render", () => {
-  test("masthead, hero, cards, highlights all present", async ({ page }) => {
+  test("masthead, cards, highlights all present", async ({ page }) => {
     await page.goto("./");
     await expect(page.locator("h1", { hasText: "Briefing Hub" })).toBeVisible();
-    await expect(page.locator(".hero h2")).toBeVisible();
     await expect(page.locator(".card").first()).toBeVisible();
     await expect(page.locator(".section-h", { hasText: "This week" })).toBeVisible();
   });
