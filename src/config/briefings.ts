@@ -48,10 +48,10 @@ export const BRIEFINGS: readonly BriefingConfig[] = [
   },
   {
     slug: "economist-briefing",
-    name: "Economist Briefing",
+    name: "The Economist Briefing",
     category: "Economist",
     accent: "#e3120b",
-    description: "유료 구독 기사 큐레이션 · 주간",
+    description: "The Economist 유료 구독 기사 큐레이션 · 주간",
     manifestUrl: "file:./mocks/economist-briefing.json",
     siteUrl: "https://kipeum86.github.io/economist-briefing/",
     comingSoon: true,

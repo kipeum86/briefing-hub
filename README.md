@@ -28,7 +28,7 @@ briefing sites and renders them as a single, opinionated weekly view.
 ## What it does
 
 KP runs five separate briefing sites — English podcasts, Korean YouTube,
-daily macro, game-industry legal, and (soon) Economist curation. Each lives
+daily macro, game-industry legal, and (soon) The Economist curation. Each lives
 on its own Astro deploy with its own aesthetic. Reading them all meant
 visiting five URLs.
 
@@ -182,7 +182,7 @@ DESIGN.md            full spec
 | [youtube-briefing](https://github.com/kipeum86/youtube-briefing) | 5 Korean YouTube channels + Mer's blog | Python + Astro |
 | [daily-brief](https://github.com/kipeum86/daily-brief) | Global macro + Korean news, daily 06:30 KST | Python + Jinja |
 | [game-legal-briefing](https://github.com/kipeum86/game-legal-briefing) | Game industry regulation, M/W/F | Python + Jinja |
-| economist-briefing | Economist curation | *Coming soon* |
+| economist-briefing | The Economist curation | *Coming soon* |
 
 ## License
 
