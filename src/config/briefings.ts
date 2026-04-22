@@ -34,7 +34,7 @@ export const BRIEFINGS: readonly BriefingConfig[] = [
     category: "Daily · Macro",
     accent: "#1a3a6b",
     description: "글로벌 매크로 + 국내 뉴스 · 매일",
-    manifestUrl: "file:./mocks/daily-brief.json",
+    manifestUrl: "https://kipeum86.github.io/daily-brief/manifest.json",
     siteUrl: "https://kipeum86.github.io/daily-brief/",
   },
   {
@@ -43,7 +43,7 @@ export const BRIEFINGS: readonly BriefingConfig[] = [
     category: "Game · Legal",
     accent: "#6b2d5c",
     description: "게임 업계 법규 · 판례 · 주간",
-    manifestUrl: "file:./mocks/game-legal-briefing.json",
+    manifestUrl: "https://kipeum86.github.io/game-legal-briefing/manifest.json",
     siteUrl: "https://kipeum86.github.io/game-legal-briefing/",
   },
   {
