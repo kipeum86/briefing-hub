@@ -20,9 +20,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: npm
-      - run: npm ci
-      - run: npm test
+          cache: pnpm
+      - name: Enable pnpm
+        run: corepack prepare pnpm@10.33.0 --activate
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
 
   playwright:
     name: playwright
@@ -32,11 +35,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: npm
-      - run: npm ci
+          cache: pnpm
+      - name: Enable pnpm
+        run: corepack prepare pnpm@10.33.0 --activate
+
+      - run: pnpm install --frozen-lockfile
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
-      - run: npm run test:e2e
+        run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm run test:e2e
       - name: Upload Playwright report on failure
         if: failure()
         uses: actions/upload-artifact@v4

@@ -9,7 +9,7 @@ on:
       - "mocks/**"
       - "astro.config.mjs"
       - "package.json"
-      - "package-lock.json"
+      - "pnpm-lock.yaml"
       - ".github/workflows/rebuild.yml"
   schedule:
     - cron: "0 21 * * *"
@@ -35,14 +35,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: npm
+          cache: pnpm
+      - name: Enable pnpm
+        run: corepack prepare pnpm@10.33.0 --activate
+
       - uses: actions/configure-pages@v5
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
       - name: Build
         env:
           PUBLIC_HUB_DEFAULT_THEME: ${{ vars.PUBLIC_HUB_DEFAULT_THEME }}
-        run: npm run build
+        run: pnpm run build
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
